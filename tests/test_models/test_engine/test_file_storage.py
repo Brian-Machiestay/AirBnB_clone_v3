@@ -117,8 +117,10 @@ class TestFileStorage(unittest.TestCase):
     @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
     def test_get(self):
         """Test that get returns a single object given cls and id"""
+        pass
 
     @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
     def test_count(self):
         """"Test that count counts all the items in database or items of a s
         specific class"""
+        pass
