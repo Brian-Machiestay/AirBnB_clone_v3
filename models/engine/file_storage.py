@@ -80,6 +80,7 @@ class FileStorage:
                     for key, val in content.items():
                         if key == clasKey:
                             return(cls(val))
+        return None
 
 
     def count(self, cls=None):
