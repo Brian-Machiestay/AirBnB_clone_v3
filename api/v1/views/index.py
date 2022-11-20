@@ -10,7 +10,6 @@ from models.state import State
 from models.user import User
 from models.review import Review
 from models.city import City
-from api.v1.views import app_views
 
 
 @app_views.route('/status')
@@ -28,4 +27,4 @@ def count_all_objs():
     objs = dict()
     for key, val in classes.items():
         objs[key] = storage.count(val)
-    return jsonify(objs)
+    return jsonify_error(objs)
