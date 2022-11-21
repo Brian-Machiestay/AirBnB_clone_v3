@@ -27,4 +27,4 @@ def count_all_objs():
     objs = dict()
     for key, val in classes.items():
         objs[key] = storage.count(val)
-    return jsonify_error(objs)
+    return jsonify(objs)

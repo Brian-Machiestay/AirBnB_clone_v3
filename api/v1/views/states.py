@@ -12,7 +12,7 @@ def states():
     """retrieves all state objects"""
     objs = storage.all(State)
     objs_list = []
-    for key,val in objs.items():
+    for key, val in objs.items():
         objs_list.append(val.to_dict())
     return jsonify(objs_list)
 
@@ -26,13 +26,15 @@ def one_state(state_id):
     return jsonify(obj.to_dict())
 
 
-@app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
+@app_views.route('/states/<state_id>', methods=['DELETE'],
+                 strict_slashes=False)
 def delete_state(state_id):
     """deletes the state object"""
     obj = storage.get(State, state_id)
     if obj is None:
         abort(404)
     storage.delete(obj)
+    storage.save()
     return jsonify(dict())
 
 
@@ -46,8 +48,7 @@ def post_state():
     if 'name' not in body.keys():
         return "Missing name", 400
     obj = State(**body)
-    storage.new(obj)
-    storage.save()
+    obj.save()
     return jsonify(obj.to_dict()), 201
 
 
@@ -61,8 +62,9 @@ def put_state(state_id):
         body = request.get_json()
     except(exception):
         return "Not a JSON", 400
+    storage.delete(obj)
     obj = obj.to_dict()
     new_obj = {**obj, **body}
     obj = State(**new_obj)
-    storage.save()
+    obj.save()
     return jsonify(obj.to_dict())
