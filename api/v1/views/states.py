@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""state view"""
+"""This is the view module for states. It
+implements all endpoints to get, delete, create and update
+a new state object
+"""
 from api.v1.views import app_views
 from flask import jsonify, request, abort
 from models import storage
