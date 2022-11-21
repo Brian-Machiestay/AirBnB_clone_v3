@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""the index file"""
+"""the index file implements the status and the stats"""
 from api.v1.views import app_views
 from flask import jsonify
 from models import storage

@@ -12,7 +12,7 @@ import json
 
 @app_views.route('/states', strict_slashes=False)
 def states():
-    """retrieves all state objects"""
+    """retrieves all state objects from the filestore or db and returns it"""
     objs = storage.all(State)
     objs_list = []
     for key, val in objs.items():
@@ -22,7 +22,7 @@ def states():
 
 @app_views.route('/states/<state_id>', strict_slashes=False)
 def one_state(state_id):
-    """retrieves one state object given the id"""
+    """retrieves one state object given the id and returns it"""
     obj = storage.get(State, state_id)
     if obj is None:
         abort(404)
@@ -32,7 +32,7 @@ def one_state(state_id):
 @app_views.route('/states/<state_id>', methods=['DELETE'],
                  strict_slashes=False)
 def delete_state(state_id):
-    """deletes the state object"""
+    """deletes the state object from the file storage or db"""
     obj = storage.get(State, state_id)
     if obj is None:
         abort(404)
@@ -43,7 +43,7 @@ def delete_state(state_id):
 
 @app_views.route('/states', methods=['POST'], strict_slashes=False)
 def post_state():
-    """creates a state object"""
+    """creates a new state object and saves it to the file or db"""
     try:
         body = request.get_json()
     except(exception):
@@ -57,7 +57,7 @@ def post_state():
 
 @app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
 def put_state(state_id):
-    """updates a state obj"""
+    """updates a state obj with new information and saves the changes"""
     obj = storage.get(State, state_id)
     if obj is None:
         abort(404)
