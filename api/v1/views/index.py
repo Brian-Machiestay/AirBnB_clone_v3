@@ -10,15 +10,16 @@ from models.state import State
 from models.user import User
 from models.review import Review
 from models.city import City
+from api.v1.views import app_views
 
 
-@app_views.route('/status')
+@app_views.route('/status', strict_slashes=False)
 def status():
     """returns the status of the request"""
     return jsonify({'status': 'OK'})
 
 
-@app_views.route('/stats')
+@app_views.route('/stats', strict_slashes=False)
 def count_all_objs():
     """returns the number of all objects"""
     classes = {"amenities": Amenity, "cities": City,
