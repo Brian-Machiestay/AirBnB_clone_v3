@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""This is the view module for states. It
+"""
+This is the view module for states. It
 implements all endpoints to get, delete, create and update
 a new state object
 """
