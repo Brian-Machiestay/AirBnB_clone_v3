@@ -2,7 +2,7 @@
 """the index file implements the status and the stats"""
 from api.v1.views import app_views
 from flask import jsonify
-from models import storage
+import models
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
@@ -27,5 +27,5 @@ def count_all_objs():
                "states": State, "users": User}
     objs = dict()
     for key, val in classes.items():
-        objs[key] = storage.count(val)
+        objs[key] = models.storage.count(val)
     return jsonify(objs)
