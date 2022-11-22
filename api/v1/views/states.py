@@ -11,7 +11,7 @@ import json
 
 
 @app_views.route('/states', strict_slashes=False)
-def states():
+def all_states():
     """retrieves all state objects from the filestore or db and returns it"""
     objs = storage.all(State)
     objs_list = []
