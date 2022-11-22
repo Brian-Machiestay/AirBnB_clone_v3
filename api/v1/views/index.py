@@ -10,7 +10,6 @@ from models.state import State
 from models.user import User
 from models.review import Review
 from models.city import City
-from api.v1.views import app_views
 
 
 @app_views.route('/status', strict_slashes=False)
